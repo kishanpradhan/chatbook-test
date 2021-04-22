@@ -6,7 +6,6 @@ from twitterapi.twitterwrapper import Twitter
 from twitterapi import rediswrapper as cache
 
 
-
 class TwitterViewSet(ViewSet):
     twitter = Twitter.newInstane()
     user_id = "user" # Get this from auth # 231747189

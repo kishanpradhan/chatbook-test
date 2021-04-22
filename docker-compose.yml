@@ -1,8 +1,6 @@
 services:
   api:
     build: .
-    ports:
-      - 8000:8000
     command: gunicorn chatbook.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/code
@@ -16,5 +14,15 @@ services:
       - TWITER_ACCESS_TOKEN_SECRET=${TWITER_ACCESS_TOKEN_SECRET}
     links:
       - redis
+
   redis:
     image: redis
+  
+  nginx:
+    image: nginx:1.20.0-alpine
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 80:80
+    links:
+      - api
