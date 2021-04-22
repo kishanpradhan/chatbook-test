@@ -5,6 +5,14 @@ services:
       - 8000:8000
     volumes:
       - .:/code
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - TWITER_API_KEY=${TWITER_API_KEY}
+      - TWITER_API_SECRET_KEY=${TWITER_API_SECRET_KEY}
+      - TWITER_BEARER_TOKEN=${TWITER_BEARER_TOKEN}
+      - TWITER_ACCESS_TOKEN=${TWITER_ACCESS_TOKEN}
+      - TWITER_ACCESS_TOKEN_SECRET=${TWITER_ACCESS_TOKEN_SECRET}
     links:
       - redis
   redis:
