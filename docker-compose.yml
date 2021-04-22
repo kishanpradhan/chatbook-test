@@ -3,6 +3,7 @@ services:
     build: .
     ports:
       - 8000:8000
+    command: gunicorn chatbook.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/code
     environment:
@@ -17,5 +18,3 @@ services:
       - redis
   redis:
     image: redis
-    ports:
-      - 6379:6379
